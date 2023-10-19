@@ -15,6 +15,17 @@ return new class extends Migration
     {
         Schema::create('doctor_profiles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                  ->constrained()
+                  ->cascadeOnDelete()->nullable();
+            $table->text('description')->nullable();
+            $table->text('curriculum_vitae')->nullable();
+
+            // $table->services(); essendo una many to many non ci vuole il campo nella tabella, si faranno direttamenet i collegamenti in tabella pivot
+            
+            $table->text('photo')->nullable();
+            $table->string('address', 200);
+            $table->boolean('visible');
             $table->timestamps();
         });
     }
