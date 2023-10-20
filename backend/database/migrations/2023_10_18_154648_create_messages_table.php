@@ -15,13 +15,11 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-
-            
-            // $table->foreignId('doctor_id')
-            //     ->constrained();
-                // ->nullable();
-            $table->unsignedBigInteger('doctor_id');
-            $table->foreign('doctor_id')->references('id')->on('doctors'); 
+            $table->foreignId('doctor_id')
+                  ->constrained();
+                
+            // $table->unsignedBigInteger('doctor_id');
+            // $table->foreign('doctor_id')->references('id')->on('doctors'); 
             $table->string('name', 50);
             $table->string('surname', 50);
             $table->string('email', 70);

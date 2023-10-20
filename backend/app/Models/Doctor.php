@@ -1,17 +1,15 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DoctorProfile extends Model
+class Doctor extends Model
 {
     use HasFactory;
-
     protected $fillable = ['user_id', 'description', 'curriculum_vitae', 'photo', 'address', 'visible'];
-    protected $table = 'doctors';
-    // con questo protected verrà presa la tabella doctor precedentemente rinominata doctor_profile
-
+    
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -36,10 +34,10 @@ class DoctorProfile extends Model
     {
         return $this->belongsToMany(Sponsorship::class);
     }
-    
+
     public function specializations()
     {
         return $this->belongsToMany(Specialization::class);
     }
-    
+
 }

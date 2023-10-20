@@ -9,8 +9,8 @@ class Sponsorship extends Model
 {
     use HasFactory;
 
-    public function doctorProfiles()
+    public function doctors()
     {
-        return $this->belongsToMany(DoctorProfiles::class);
+        return $this->belongsToMany(Doctor::class);
     }
 }

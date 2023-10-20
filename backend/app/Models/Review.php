@@ -9,8 +9,8 @@ class Review extends Model
 {
     use HasFactory;
 
-    public function doctorProfile()
+    public function doctor()
     {
-        return $this->belongsTo(DoctorProfile::class);
+        return $this->belongsTo(Doctor::class);
     }
 }

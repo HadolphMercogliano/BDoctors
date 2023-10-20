@@ -12,9 +12,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function doctorProfile()
+    public function doctor()
     {
-        return $this->hasOne(DoctorProfile::class);
+        return $this->hasOne(Doctor::class);
     }
     /**
      * The attributes that are mass assignable.

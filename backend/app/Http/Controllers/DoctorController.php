@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DoctorProfile;
-use App\Http\Requests\StoreDoctorProfileRequest;
-use App\Http\Requests\UpdateDoctorProfileRequest;
+use App\Models\Doctor;
+use App\Http\Requests\StoreDoctorRequest;
+use App\Http\Requests\UpdateDoctorRequest;
 
-class DoctorProfileController extends Controller
+class DoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class DoctorProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreDoctorProfileRequest  $request
+     * @param  \App\Http\Requests\StoreDoctorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDoctorProfileRequest $request)
+    public function store(StoreDoctorRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class DoctorProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DoctorProfile  $doctorProfile
+     * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function show(DoctorProfile $doctorProfile)
+    public function show(Doctor $doctor)
     {
         //
     }
@@ -53,10 +53,10 @@ class DoctorProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DoctorProfile  $doctorProfile
+     * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function edit(DoctorProfile $doctorProfile)
+    public function edit(Doctor $doctor)
     {
         //
     }
@@ -64,11 +64,11 @@ class DoctorProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateDoctorProfileRequest  $request
-     * @param  \App\Models\DoctorProfile  $doctorProfile
+     * @param  \App\Http\Requests\UpdateDoctorRequest  $request
+     * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDoctorProfileRequest $request, DoctorProfile $doctorProfile)
+    public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
         //
     }
@@ -76,10 +76,10 @@ class DoctorProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DoctorProfile  $doctorProfile
+     * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DoctorProfile $doctorProfile)
+    public function destroy(Doctor $doctor)
     {
         //
     }
