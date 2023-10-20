@@ -23,7 +23,7 @@ class DoctorProfileSeeder extends Seeder
     {
       $users = User::all()->pluck("id")->toArray();
 
-      for ($i=1; $i <= 10 ; $i++)
+      for ($i=1; $i <= 11 ; $i++)
       {
         $profile = new DoctorProfile();      
         $profile->user_id = $i;
