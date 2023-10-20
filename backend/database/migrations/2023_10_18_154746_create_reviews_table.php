@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('doctor_profile_id')
+                ->constrained();
+                // ->nullable();
+            $table->string('name', 50);
+            $table->string('surname', 50);
+            $table->string('email', 70);
+            $table->text('text');
+            
             $table->timestamps();
         });
     }

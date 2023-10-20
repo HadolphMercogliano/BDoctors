@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('stars', function (Blueprint $table) {
             $table->id();
+
+            $table->tinyInteger('vote')->unsigned()->unique();
+
             $table->timestamps();
         });
     }
