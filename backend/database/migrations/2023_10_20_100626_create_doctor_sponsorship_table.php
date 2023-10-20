@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('doctor_profile_sponsorship', function (Blueprint $table) {
+        Schema::create('doctor_sponsorship', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('doctor_profile_id')
-            ->constrained()
-            ->cascadeOnDelete();
-            $table->foreignId('sponsorship_id')
-            ->constrained()
-            ->cascadeOnDelete();
+            $table->unsignedBigInteger('doctor_id');
+            $table->foreign('doctor_id')->references('id')->on('doctors'); 
+
+            $table->unsignedBigInteger('sponsorship_id');
+            $table->foreign('sponsorship_id')->references('id')->on('sponsorships'); 
 
             $table->timestamps();
         });
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doctor_profile_sponsorship');
+        Schema::dropIfExists('doctor_sponsorship');
     }
 };

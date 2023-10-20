@@ -9,7 +9,7 @@ class Specialization extends Model
 {
     use HasFactory;
 
-    public function DoctorProfiles()
+    public function doctorProfiles()
     {
         return $this->belongsToMany(DoctorProfiles::class);
     }

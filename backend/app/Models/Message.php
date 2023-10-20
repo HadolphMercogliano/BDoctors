@@ -9,8 +9,8 @@ class Message extends Model
 {
     use HasFactory;
 
-    public function message()
+    public function doctorProfile()
     {
-        return $this->belongsTo(Message::class);
+        return $this->belongsTo(DoctorProfile::class);
     }
 }

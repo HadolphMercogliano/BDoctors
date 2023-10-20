@@ -9,6 +9,8 @@ class DoctorProfile extends Model
     use HasFactory;
 
     protected $fillable = ['user_id', 'description', 'curriculum_vitae', 'photo', 'address', 'visible'];
+    protected $table = 'doctors';
+    // con questo protected verrà presa la tabella doctor precedentemente rinominata doctor_profile
 
     public function user()
     {
