@@ -20,9 +20,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                {{-- nome sito --}}
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                 {{-- /nome sito --}}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,6 +32,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
+                        </li>
+
+                        {{-- zona solo autenticati --}}
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('/dashboard') }}">{{ __('Dashboard') }}</a>
+                            </li>
+                        @endauth
+                        {{-- /zona autenticati --}}
 
                     </ul>
 

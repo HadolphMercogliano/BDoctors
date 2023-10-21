@@ -42,7 +42,7 @@
             <tr>
                 <th scope="row">{{ $doctor->id }}</th>
                 <td>{{ $doctor->title }}</td>
-                <td>@if($doctor->image) <a href="#" class="btn btn-sm btn-secondary">img</a> @endif {{ $doctor->title }}</td>
+                <td>@if($doctor->photo) <a href="#" class="btn btn-sm btn-secondary">img</a> @endif {{ $doctor->title }}</td>
                 <td>{{ $doctor->slug }}</td>
                 <td>
                     <ul class="list-unstyled d-flex m-0 gap-1 justify-content-end">
@@ -64,7 +64,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Sei sicuro di voler cancellare il progetto con id <strong>{{ $doctor->id }}</strong>?
+                        Sei sicuro di voler cancellare il profilo con id <strong>{{ $doctor->id }}</strong>?
                     </div>
                     <div class="modal-footer">
                         <form action="{{ route('profile.admin.doctor.destroy', $doctor) }}" method="POST">

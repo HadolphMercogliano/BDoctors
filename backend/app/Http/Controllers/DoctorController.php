@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
+use App\Models\Specialization;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -79,8 +80,11 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Doctor $doctor)
-    {
-        return view('profile.admin.doctor.edit', compact('doctor'));
+    {        
+        $specializations=Specialization::all();
+        $user_data = Auth::user();
+        $doctor = Auth::user()->doctor;
+        return view('profile.admin.doctor.edit', compact('doctor','specializations','user_data'));
 
     }
 

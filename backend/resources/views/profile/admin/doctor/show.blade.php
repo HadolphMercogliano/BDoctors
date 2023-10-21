@@ -5,13 +5,21 @@
 		<div class="col-lg-6">
 			{{-- @dump($restaurant) --}}
 			@if (isset($doctor))
+
+			{{-- Edit --}}
+			<ul class="list-unstyled d-flex m-0 gap-1 justify-content-center">
+				<li><a href="{{ route('profile.admin.doctor.edit', $doctor) }}" class="btn btn-sm btn-warning">Modifica Profilo Dottore</a></li>
+				{{-- <li><a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#post-{{ $doctor->id }}">Delete</a> --}}</li>
+			</ul>
+			{{-- /Edit --}}
+
 				<section class="card my-5">
 					<img src="{{ $doctor->photo }}" class="card-img-top img-fluid" alt="restaurant image">
 					<div class="card-body d-flex flex-column">
 						<h5 class="card-title mb-3">{{ $user_data['name'] }}</h5>
 
 						<p class="card-text">
-							<strong> Categorie: </strong>
+							<strong> Specializzazioni: </strong>
 							@foreach ($doctor->specializations as $specialization)
 								{!! $specialization->name !!}
 							@endforeach
