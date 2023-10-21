@@ -50,7 +50,7 @@ class DoctorController extends Controller
     {
       $user_data = Auth::user();
       $doctor = Auth::user()->doctor;
-      return view('admin.doctor.show', compact('doctor', 'user_data'));
+      return view('profile.admin.doctor.show', compact('doctor', 'user_data'));
     }
 
     /**
