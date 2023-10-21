@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
@@ -47,7 +48,9 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        //
+      $user_data = Auth::user();
+      $doctor = Auth::user()->doctor;
+      return view('admin.doctor.show', compact('doctor', 'user_data'));
     }
 
     /**
