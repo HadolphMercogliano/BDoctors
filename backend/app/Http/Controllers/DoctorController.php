@@ -47,7 +47,7 @@ class DoctorController extends Controller
         $user_id = auth()->user()->id;
         $data = $request->validated();
         $doctor = new Doctor();
-        $doctor->user_id =$user_id;
+        $doctor->user_id = $user_id;
         // $doctor->slug =  Str::slug($data['title']); DA FIXARE
         $doctor->fill($data);
 
@@ -70,9 +70,9 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-      $user_data = Auth::user();
-      $doctor = Auth::user()->doctor;
-      return view('profile.admin.doctor.show', compact('doctor', 'user_data'));
+        $user_data = Auth::user();
+        $doctor = Auth::user()->doctor;
+        return view('profile.admin.doctor.show', compact('doctor', 'user_data'));
     }
 
     /**
@@ -82,12 +82,11 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Doctor $doctor)
-    {        
-        $specializations=Specialization::all();
+    {
+        $specializations = Specialization::all();
         $user_data = Auth::user();
         $doctor = Auth::user()->doctor;
-        return view('profile.admin.doctor.edit', compact('doctor','specializations','user_data'));
-
+        return view('profile.admin.doctor.edit', compact('doctor', 'specializations', 'user_data'));
     }
 
     /**
@@ -106,7 +105,7 @@ class DoctorController extends Controller
 
         // immagine
         if (isset($data['image'])) {
-            if($doctor->photo){
+            if ($doctor->photo) {
                 Storage::delete($doctor->photo);
             }
             $data['photo'] = Storage::put('uploads', $data['photo']);
@@ -115,7 +114,7 @@ class DoctorController extends Controller
         // immagine
         $doctor->update($data);
 
-        return redirect()->route('profile.admin.doctor.show', compact('doctor','user_data'));
+        return redirect()->route('profile.admin.doctor.show', compact('doctor', 'user_data'));
     }
 
     /**
@@ -127,8 +126,8 @@ class DoctorController extends Controller
     public function destroy(Doctor $doctor)
     {
         $old_id = $doctor->id;
-        
-        if($doctor->image){
+
+        if ($doctor->image) {
             Storage::delete($doctor->image);
         }
         $doctor->delete();
