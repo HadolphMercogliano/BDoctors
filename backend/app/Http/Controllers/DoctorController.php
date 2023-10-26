@@ -53,9 +53,16 @@ class DoctorController extends Controller
 
         // immagine
         // $doctor->slug =  Str::slug($data['title']);
-        if (isset($data['photo'])) {
-            $doctor->image = Storage::put('uploads', $data['photo']);
+
+        if (array_key_exists('photo', $data)) {
+            $img_url = Storage::put('uploads/doctor', $data['photo']);
+            $data['photo'] = $img_url;
         }
+
+
+        // if (isset($data['photo'])) {
+        //     $doctor->photo = Storage::put('uploads', $data['photo']);
+        // }
         // immagine
         $doctor->save();
 
@@ -98,19 +105,25 @@ class DoctorController extends Controller
      */
     public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
+        dd($request);
         $user_data = Auth::user();
         $doctor = Auth::user()->doctor;
         $data = $request->validated();
         // $doctor->slug =  Str::slug($data['user_id']); DA FIXARE
 
         // immagine
-        if (isset($data['image'])) {
-            if ($doctor->photo) {
-                Storage::delete($doctor->photo);
-            }
-            $data['photo'] = Storage::put('uploads', $data['photo']);
-            $doctor->photo = $data['photo'];
+        if (array_key_exists('photo', $data)) {
+            $img_url = Storage::put('uploads/doctor', $data['photo']);
+            $data['photo'] = $img_url;
         }
+
+        // if (isset($data['photo'])) {
+        //     if ($doctor->photo) {
+        //         Storage::delete($doctor->photo);
+        //     }
+        //     $data['photo'] = Storage::put('uploads', $data['photo']);
+        //     $doctor->photo = $data['photo'];
+        // }
         // immagine
         $doctor->update($data);
 

@@ -24,11 +24,6 @@
             @method('PUT')
             <div class="mb-3">
 
-                <label for="name" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="name" name="name"
-                    value="{{ old('name', $user_data['name']) }}">
-            </div>
-
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea class="form-control" id="description" name="description">{{ old('description', $doctor->description) }}</textarea>
@@ -71,8 +66,9 @@
                     {{-- DATABASE <img id="file-image-preview" @if ($doctor->photo) src="{{ asset('storage/' . $doctor->photo) }}" @endif> --}}
                     <img id="file-image-preview" @if ($doctor->photo) src="{{ $doctor->photo }}" @endif>
                 </div>
-                <label for="image" class="form-label py-4">Foto Dottore</label>
-                <input class="form-control" type="file" id="image" name="image">
+                <label for="photo" class="form-label py-4">Foto Dottore</label>
+                <input class="form-control" type="file" id="photo" name="photo">
+                {{-- <input type="text" id='photo' name='photo'> --}}
             </div>
             {{-- /immagini --}}
 

@@ -27,7 +27,9 @@ class StoreDoctorRequest extends FormRequest
             'address' => 'max:200|string',
             'description' => 'nullable|string',
             'curriculum_vitae' => 'nullable|string',
-            'photo' => 'nullable',
+            'photo' => 'image|nullable|mimes:jpg,png,jpeg',
+            // 'photo' => 'nullable',
+            
             'visible' => 'default:false|boolean',
         ];
     }
