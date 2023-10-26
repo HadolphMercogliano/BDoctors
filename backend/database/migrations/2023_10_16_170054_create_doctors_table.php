@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('curriculum_vitae')->nullable();
             $table->text('photo')->nullable();
             $table->string('address', 200);
-            $table->boolean('visible');
+            $table->boolean('visible')->default(false);
             $table->timestamps();
         });
     }

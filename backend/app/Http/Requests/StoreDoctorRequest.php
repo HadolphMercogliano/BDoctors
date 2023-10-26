@@ -26,8 +26,9 @@ class StoreDoctorRequest extends FormRequest
         return [
             'address' => 'max:200|string',
             'description' => 'nullable|string',
-            'curriculum_vitar' => 'nullable|string',
+            'curriculum_vitae' => 'nullable|string',
             'photo' => 'nullable',
+            'visible' => 'default:false|boolean',
         ];
     }
 }
