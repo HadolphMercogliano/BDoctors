@@ -64,13 +64,11 @@
                 {{-- preview immagine --}}
                 <div class="preview">
                     {{-- DATABASE <img id="file-image-preview" @if ($doctor->photo) src="{{ asset('storage/' . $doctor->photo) }}" @endif> --}}
-                    <img id="file-image-preview" @if ($doctor->photo) src="{{ $doctor->photo }}" @endif>
+                    <img id="file-image-preview" @if ($doctor->photo) src="{{ $doctor->getPictureUri() }}" @endif>
                 </div>
                 <label for="photo" class="form-label py-4">Foto Dottore</label>
-                {{-- <input class="form-control" type="text" id="photo" name="photo"> --}}
                 <input class="form-control" type="file" id="photo" name="photo"
                 value="{{ old('photo', $doctor->photo) }}">
-                {{-- <input type="text" id='photo' name='photo'> --}}
             </div>
             {{-- /immagini --}}
 
