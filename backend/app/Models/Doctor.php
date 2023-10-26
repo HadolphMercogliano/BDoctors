@@ -9,7 +9,7 @@ class Doctor extends Model
 {
     use HasFactory;
     protected $fillable = ['user_id', 'description', 'curriculum_vitae', 'photo', 'address', 'visible'];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -39,5 +39,4 @@ class Doctor extends Model
     {
         return $this->belongsToMany(Specialization::class);
     }
-
 }
