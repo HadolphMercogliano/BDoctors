@@ -23,7 +23,7 @@ class DoctorController extends Controller
         $doctors = Doctor::all();
 
         // prendiamo il file index dentro la cartella view->profile->admin->doctors usando la dot notation
-        return view('profile.admin.doctors.index', compact('doctors'));
+        // return view('profile.admin.doctors.index', compact('doctors'));
     }
 
     /**
@@ -44,20 +44,22 @@ class DoctorController extends Controller
      */
     public function store(StoreDoctorRequest $request)
     {
+        $user_id = auth()->user()->id;
         $data = $request->validated();
         $doctor = new Doctor();
-        $doctor->slug =  Str::slug($data['title']);
+        $doctor->user_id =$user_id;
+        // $doctor->slug =  Str::slug($data['title']); DA FIXARE
         $doctor->fill($data);
 
         // immagine
-        $doctor->slug =  Str::slug($data['title']);
-        if (isset($data['image'])) {
-            $doctor->image = Storage::put('uploads', $data['image']);
+        // $doctor->slug =  Str::slug($data['title']);
+        if (isset($data['photo'])) {
+            $doctor->image = Storage::put('uploads', $data['photo']);
         }
         // immagine
         $doctor->save();
 
-        return redirect()->route('profile.admin.doctors.index')->with('message', 'Nuovo Profilo Dottore Creato');
+        return redirect()->route('profile.admin.doctor.show')->with('message', 'Nuovo Profilo Dottore Creato');
     }
 
     /**
@@ -97,17 +99,23 @@ class DoctorController extends Controller
      */
     public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
+        $user_data = Auth::user();
+        $doctor = Auth::user()->doctor;
         $data = $request->validated();
-        $doctor->slug =  Str::slug($data['title']);
+        // $doctor->slug =  Str::slug($data['user_id']); DA FIXARE
 
         // immagine
         if (isset($data['image'])) {
-            $doctor->image = Storage::put('uploads', $data['image']);
+            if($doctor->photo){
+                Storage::delete($doctor->photo);
+            }
+            $data['photo'] = Storage::put('uploads', $data['photo']);
+            $doctor->photo = $data['photo'];
         }
         // immagine
         $doctor->update($data);
 
-        return redirect()->route('profile.admin.doctor.index')->with('message', "Il $doctor->id Dottore è aggiornato");
+        return redirect()->route('profile.admin.doctor.show', compact('doctor','user_data'));
     }
 
     /**
@@ -125,6 +133,6 @@ class DoctorController extends Controller
         }
         $doctor->delete();
 
-        return redirect()->route('profile.admin.doctor.index')->with('message', "Il $old_id Dottore è stato Cancellato");
+        return redirect()->route('profile.admin.doctor.show')->with('message', "Il $old_id Dottore è stato Cancellato");
     }
 }

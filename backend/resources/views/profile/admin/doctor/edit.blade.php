@@ -66,7 +66,8 @@
         <div class="mb-3 @if(!$doctor->photo) d-none @endif"  id="image-input-container">
           {{-- preview immagine --}}
           <div class="preview">
-              <img id="file-image-preview" @if($doctor->photo) src="{{ asset('storage/' . $doctor->photo) }}" @endif>
+              {{-- DATABASE <img id="file-image-preview" @if($doctor->photo) src="{{ asset('storage/' . $doctor->photo) }}" @endif> --}} 
+              <img id="file-image-preview" @if($doctor->photo) src="{{$doctor->photo}}" @endif>
           </div>
           <label for="image" class="form-label py-4">Foto Dottore</label>
           <input class="form-control" type="file" id="image" name="image">

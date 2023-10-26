@@ -13,7 +13,7 @@ class StoreDoctorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreDoctorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'address' => 'max:200|string',
+            'description' => 'nullable|string',
+            'curriculum_vitar' => 'nullable|string',
+            'photo' => 'nullable',
         ];
     }
 }
