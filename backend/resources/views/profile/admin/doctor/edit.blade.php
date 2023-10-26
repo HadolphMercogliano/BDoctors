@@ -67,7 +67,9 @@
                     <img id="file-image-preview" @if ($doctor->photo) src="{{ $doctor->photo }}" @endif>
                 </div>
                 <label for="photo" class="form-label py-4">Foto Dottore</label>
-                <input class="form-control" type="file" id="photo" name="photo">
+                {{-- <input class="form-control" type="text" id="photo" name="photo"> --}}
+                <input class="form-control" type="file" id="photo" name="photo"
+                value="{{ old('photo', $doctor->photo) }}">
                 {{-- <input type="text" id='photo' name='photo'> --}}
             </div>
             {{-- /immagini --}}

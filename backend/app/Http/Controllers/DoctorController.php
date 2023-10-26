@@ -55,7 +55,7 @@ class DoctorController extends Controller
         // $doctor->slug =  Str::slug($data['title']);
 
         if (array_key_exists('photo', $data)) {
-            $img_url = Storage::put('uploads/doctor', $data['photo']);
+            $img_url = Storage::put('uploads', $data['photo']);
             $data['photo'] = $img_url;
         }
 
@@ -105,7 +105,7 @@ class DoctorController extends Controller
      */
     public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
-        dd($request);
+        // dd($request);
         $user_data = Auth::user();
         $doctor = Auth::user()->doctor;
         $data = $request->validated();
@@ -113,7 +113,7 @@ class DoctorController extends Controller
 
         // immagine
         if (array_key_exists('photo', $data)) {
-            $img_url = Storage::put('uploads/doctor', $data['photo']);
+            $img_url = Storage::put('uploads', $data['photo']);
             $data['photo'] = $img_url;
         }
 

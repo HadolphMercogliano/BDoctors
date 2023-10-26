@@ -17,6 +17,6 @@ function showPreview(event) {
     }
 }
 
-const imageInput = document.getElementById('#photo');
+const imageInput = document.getElementById('photo');
 
 imageInput.addEventListener('change', showPreview);

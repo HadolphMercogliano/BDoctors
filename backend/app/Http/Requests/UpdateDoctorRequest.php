@@ -29,7 +29,6 @@ class UpdateDoctorRequest extends FormRequest
             'description' => 'nullable|string',
             'curriculum_vitae' => 'nullable|string',
             'photo' => 'image|nullable|mimes:jpg,png,jpeg',
-            // 'photo' => 'nullable',
             'visible' => 'default:false|boolean',
         ];
     }
