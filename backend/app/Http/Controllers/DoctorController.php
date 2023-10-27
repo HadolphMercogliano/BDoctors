@@ -50,6 +50,7 @@ class DoctorController extends Controller
      */
     public function store(StoreDoctorRequest $request)
     {
+        // dd($request);
         $user_id = auth()->user()->id;
         $data = $request->validated();
         $doctor = new Doctor();
@@ -75,7 +76,7 @@ class DoctorController extends Controller
             $doctor->specializations()->sync($data['specializations']);
         }
 
-        return redirect()->route('profile.admin.doctor.show')->with('message', 'Nuovo Profilo Dottore Creato');
+        return redirect()->route('profile.admin.doctor.show', $doctor)->with('message', 'Nuovo Profilo Dottore Creato');
     }
 
     /**
