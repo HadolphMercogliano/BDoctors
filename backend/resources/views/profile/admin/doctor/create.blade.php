@@ -2,8 +2,6 @@
 
 @section('content')
     <div class="container">
-        <h2>Crea post</h2>
-
         {{-- validazione errori --}}
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -40,12 +38,11 @@
                     <div class="mb-3">
                         <p>Scegli la tua specializzazione:</p>
                         @foreach ($specializations as $specialization)
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="specialization"
-                                    value="{{ $doctor->id }}" name="specializations[]"
-                                    {{ in_array($specialization->id, old('specializations', [])) ? 'checked' : '' }}>
-                                <label class="form-check-label" for="specialization">{!! $specialization->name !!}</label>
-                            </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="{{ $specialization->id }}"
+                                value="{{ $specialization->id }}" name="specializations[]">
+                            <label class="form-check-label" for="specialization">{!! $specialization->name !!}</label>
+                        </div>
                         @endforeach
                     </div>
 
@@ -63,14 +60,10 @@
                             placeholder="Inserisci CV" required minlength="1" maxlength="100"
                             value="{{ old('curriculum_vitae') }}">
                     </div>
-
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email"
-                            placeholder="inserisci email" required minlength="1" maxlength="100"
-                            value="{{ old('email') }}">
-                    </div>
-
+                    
+                    <label for="visible" class="form-label">Pubblicato:</label>
+                    <input class="form-check-input" type="checkbox" id="visible"
+                                value="1" name="visible">
 
                     {{-- Immagine --}}
                     <div class="mb-3">

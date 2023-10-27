@@ -39,7 +39,7 @@ class DoctorController extends Controller
         if (count($doctor)==0){
             $doctor=[];
         };
-        return view('profile.admin.doctors.create', compact('specializations', 'doctor'));
+        return view('profile.admin.doctor.create', compact('specializations', 'doctor'));
     }
 
     /**
