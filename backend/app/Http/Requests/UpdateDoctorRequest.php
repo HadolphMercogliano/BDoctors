@@ -30,6 +30,7 @@ class UpdateDoctorRequest extends FormRequest
             'curriculum_vitae' => 'nullable|string',
             'photo' => 'image|nullable|mimes:jpg,png,jpeg',
             'visible' => 'default:false|boolean',
+            'specializations'=>'exists:specializations,id',
         ];
     }
 }

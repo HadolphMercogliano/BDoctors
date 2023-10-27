@@ -32,8 +32,14 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('profile.admin.doctors.create');
+    {   
+        $specializations=Specialization::all();
+        $user_id = auth()->user()->id;
+        $doctor = Doctor::where('user_id', $user_id)->get();
+        if (count($doctor)==0){
+            $doctor=[];
+        };
+        return view('profile.admin.doctors.create', compact('specializations', 'doctor'));
     }
 
     /**
@@ -65,6 +71,9 @@ class DoctorController extends Controller
         // }
         // immagine
         $doctor->save();
+        if(isset($data['specializations'])){
+            $doctor->specializations()->sync($data['specializations']);
+        }
 
         return redirect()->route('profile.admin.doctor.show')->with('message', 'Nuovo Profilo Dottore Creato');
     }
@@ -93,7 +102,9 @@ class DoctorController extends Controller
         $specializations = Specialization::all();
         $user_data = Auth::user();
         $doctor = Auth::user()->doctor;
-        return view('profile.admin.doctor.edit', compact('doctor', 'specializations', 'user_data'));
+        $doctor_specializations = $doctor->specializations->pluck('id')->toArray();
+
+        return view('profile.admin.doctor.edit', compact('doctor', 'specializations', 'user_data','doctor_specializations'));
     }
 
     /**
@@ -125,6 +136,11 @@ class DoctorController extends Controller
         //     $doctor->photo = $data['photo'];
         // }
         // immagine
+
+        // specializzazioni
+        $specializations = isset($data['specializations']) ? $data['specializations'] : [];
+        $doctor->specializations()->sync($specializations);
+        // specializzazioni
         $doctor->update($data);
 
         return redirect()->route('profile.admin.doctor.show', compact('doctor', 'user_data'));

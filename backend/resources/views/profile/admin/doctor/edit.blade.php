@@ -23,20 +23,19 @@
             @csrf
             @method('PUT')
             <div class="mb-3">
-
-            <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea class="form-control" id="description" name="description">{{ old('description', $doctor->description) }}</textarea>
             </div>
 
             <div class="mb-3">
                 <p>Specializzato in:</p>
-                @foreach ($doctor->specializations as $specialization)
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="specialization" value="{{ $doctor->id }}"
-                            name="specializations[]" checked>
-                        <label class="form-check-label" for="specialization">{!! $specialization->name !!}</label>
-                    </div>
+                @foreach ($specializations as $specialization)
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="{{ $specialization->id }}"
+                        value="{{ $specialization->id }}" name="specializations[]"
+                        @checked(in_array($specialization->id, old('specializations', $doctor_specializations ?? [])))>
+                    <label class="form-check-label" for="specialization">{!! $specialization->name !!}</label>
+                </div>
                 @endforeach
             </div>
 
