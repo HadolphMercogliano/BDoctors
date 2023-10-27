@@ -8,7 +8,7 @@
 
 				{{-- Edit --}}
 				<ul class="list-unstyled d-flex m-0 gap-1 justify-content-center">
-					<li><a href="{{ route('profile.admin.doctor.edit', $doctor) }}" class="btn btn-sm btn-warning">Modifica Profilo
+					<li><a href="{{ route('admin.doctor.edit', $doctor) }}" class="btn btn-sm btn-warning">Modifica Profilo
 							Dottore</a></li>
 					{{-- <li><a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#post-{{ $doctor->id }}">Delete</a> --}}</li>
 				</ul>
