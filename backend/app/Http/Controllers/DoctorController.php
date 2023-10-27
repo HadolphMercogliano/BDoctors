@@ -76,7 +76,7 @@ class DoctorController extends Controller
             $doctor->specializations()->sync($data['specializations']);
         }
 
-        return redirect()->route('profile.admin.doctor.show', $doctor)->with('message', 'Nuovo Profilo Dottore Creato');
+        return redirect()->route('admin.doctor.show', $doctor)->with('message', 'Nuovo Profilo Dottore Creato');
     }
 
     /**
@@ -89,7 +89,7 @@ class DoctorController extends Controller
     {
         $user_data = Auth::user();
         $doctor = Auth::user()->doctor;
-        return view('profile.admin.doctor.show', compact('doctor', 'user_data'));
+        return view('admin.doctor.show', compact('doctor', 'user_data'));
     }
 
     /**
@@ -105,7 +105,7 @@ class DoctorController extends Controller
         $doctor = Auth::user()->doctor;
         $doctor_specializations = $doctor->specializations->pluck('id')->toArray();
 
-        return view('profile.admin.doctor.edit', compact('doctor', 'specializations', 'user_data','doctor_specializations'));
+        return view('admin.doctor.edit', compact('doctor', 'specializations', 'user_data','doctor_specializations'));
     }
 
     /**
@@ -144,7 +144,7 @@ class DoctorController extends Controller
         // specializzazioni
         $doctor->update($data);
 
-        return redirect()->route('profile.admin.doctor.show', compact('doctor', 'user_data'));
+        return redirect()->route('admin.doctor.show', compact('doctor', 'user_data'));
     }
 
     /**
@@ -162,6 +162,6 @@ class DoctorController extends Controller
         }
         $doctor->delete();
 
-        return redirect()->route('profile.admin.doctor.show')->with('message', "Il $old_id Dottore è stato Cancellato");
+        return redirect()->route('admin.doctor.show')->with('message', "Il $old_id Dottore è stato Cancellato");
     }
 }
