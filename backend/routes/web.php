@@ -37,7 +37,6 @@ Route::get('/dashboard', [DoctorController::class, 'show'])->middleware('auth')-
 // });
 Route::middleware('auth')
     ->prefix('/admin')
-    ->name('admin.')
     ->group(function() {
         Route::resource('doctor', DoctorController::class);
 

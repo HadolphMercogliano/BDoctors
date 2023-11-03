@@ -17,10 +17,18 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('doctor_id');
-            $table->foreign('doctor_id')->references('id')->on('doctors'); 
+            $table->foreign('doctor_id')
+                  ->references('id')->on('doctors')
+                  ->constrained()
+                  ->cascadeOnDelete(); 
 
             $table->unsignedBigInteger('specialization_id');
-            $table->foreign('specialization_id')->references('id')->on('specializations'); 
+            $table->foreign('specialization_id')
+                  ->references('id')
+                  ->on('specializations')
+                  ->constrained()
+                  ->cascadeOnDelete(); 
+                  
             $table->timestamps();
 
         });
