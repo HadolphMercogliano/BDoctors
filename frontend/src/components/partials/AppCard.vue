@@ -23,6 +23,7 @@ export default {
 <template>
   <div class="ms_card text-center">
     <div class="card-body mt-1 p-1">
+      <img :src="data.photo" alt="" />
       <h5 class="card-title fw-bold mb-2 mt-2">{{ data.name }} {{ data.surname }}</h5>
       <div v-if="data.doctors" class="overflow-x-auto">
         <span class="ir-badge me-1" v-for="doctor in data.doctors">{{ doctor.name }}</span>
