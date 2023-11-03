@@ -15,7 +15,11 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::where('visible', true)->orderBy('created_at')->with('specializations')->get();
+        $doctors = Doctor::where('visible', true)
+                  ->orderBy('created_at')
+                  ->with('specializations')
+                  ->with('user')
+                  ->get();
         foreach($doctors as $doctor) {
             $doctor->photo = $doctor->getPictureUri();
           }
