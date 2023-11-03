@@ -1,5 +1,5 @@
 import AppHome from './components/pages/AppHome.vue';
-
+import AppDoctorShow from './components/pages/AppDoctorShow.vue'
 import {createRouter, createWebHistory} from 'vue-router';
 
 
@@ -10,7 +10,12 @@ const router = createRouter({
             path: '/',
             name: 'home',
             component: AppHome
-        }
+        },
+        {
+          path: "/doctor/:id",
+          name: "doctor-show",
+          component: AppDoctorShow
+        },
         // {
         //     path: '',
         //     name: '',

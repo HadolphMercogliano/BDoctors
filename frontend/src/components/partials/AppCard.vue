@@ -31,6 +31,15 @@ export default {
       <div v-if="data.address">{{ data.address }}</div>
       <div class="mt-3 d-flex justify-content-center"></div>
     </div>
+    <router-link
+      :to="{
+        name: 'doctor-show',
+        params: {
+          id: data.id,
+        },
+      }">
+      <button class="btn btn-sm btn-primary">Dettagli</button>
+    </router-link>
   </div>
 </template>
 
