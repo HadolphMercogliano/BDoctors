@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('doctor_id')
-                  ->constrained();
+                  ->constrained()
+                  ->cascadeOnDelete(); 
                 
             // $table->unsignedBigInteger('doctor_id');
             // $table->foreign('doctor_id')->references('id')->on('doctors'); 

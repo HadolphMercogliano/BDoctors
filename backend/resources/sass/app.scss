@@ -6,3 +6,18 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+
+// Preview Upload-Image Box non visibile
+// .preview {
+//     #file-image-preview {
+//         display: none;
+//         max-width: 10.75rem;
+//     }
+// }
+
+.preview {
+    #file-image-preview {
+        max-width: 17.75rem;
+    }
+}
