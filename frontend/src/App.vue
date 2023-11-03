@@ -13,7 +13,8 @@ export default {
 </script>
 <template>
   <AppHeader></AppHeader>
-  <AppMain></AppMain>
+  <router-view></router-view>
+  <!-- <AppMain></AppMain> -->
 </template>
 
 <style lang="scss"></style>

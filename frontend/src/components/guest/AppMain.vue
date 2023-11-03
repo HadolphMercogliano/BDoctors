@@ -21,7 +21,7 @@ export default {
 };
 </script>
 <template>
-  <main>
+  <main class="pt-5">
     BDoctors main
     <div v-for="doctor in doctors"></div>
   </main>
