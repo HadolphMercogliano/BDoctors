@@ -17,12 +17,11 @@ class DoctorController extends Controller
 {
     public function index()
     {
-        // $doctors = Doctor::all('visible', true)
-        //     ->orderBy('created_at')
-        //     ->with('specializations')
-        //     ->with('user')
-        //     ->get();
-        $doctors = Doctor::all();
+        $doctors = Doctor::where('visible', true)
+            ->orderBy('created_at')
+            ->with('specializations')
+            ->with('user')
+            ->get();
         $specializationsId = [];
         foreach ($doctors as $doctor) {
             $doctor->photo = $doctor->getPictureUri();
