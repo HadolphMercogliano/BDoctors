@@ -47,15 +47,15 @@ class DoctorController extends Controller
         }
     }
 
-    public function show(string $slug)
+    public function show($id)
     {
 
-        $doctors = Doctor::where('slug', $slug)->with('specializations')->get();
+        $doctor = Doctor::where('id', $id)->with('specializations')->get();
 
-        if (count($doctors) > 0) {
+        if (count($doctor) > 0) {
             return response()->json([
                 'success' => true,
-                'results' => $doctors
+                'results' => $doctor
             ]);
         } else {
             return response()->json([
