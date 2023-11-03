@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreDoctorRequest;
 use App\Models\Doctor;
+use App\Models\Specialization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class DoctorController extends Controller
 {
@@ -24,6 +28,26 @@ class DoctorController extends Controller
             $doctor->photo = $doctor->getPictureUri();
           }
           return response()->json(compact('doctors'));
+
+          $specializationsId = [];
+          foreach($doctors as $doctor){
+              foreach($doctor->specializations as $specialization){
+                  array_push($specializationsId, $specialization->id);
+              }
+          };
+          $specializations = Specialization::whereIn('id', $specializationsId)->get();
+          if(count($doctors)>0){
+              return response()->json([
+                  'success' => true,
+                  'results' => ['doctors' => $doctors,
+                  'specializations' => $specializations]
+              ]);
+          } else {
+              return response()->json([
+                  'success' => false,
+                  'results' => null
+              ], 404);
+          }
     }
 
     /**
@@ -53,12 +77,27 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(string $slug)
     {
-      $doctor = Doctor::where('id', $id)->where('visible', true)->with('specializations')->get();
+    //   $doctor = Doctor::where('id', $id)->where('visible', true)->with('specializations')->get();
 
-        return response()->json($doctor);
+        // return response()->json($doctor);
+
+        $doctors = Doctor::where('slug', $slug)->with('specializations')->get();
+
+        if(count($doctors)>0){
+            return response()->json([
+                'success' => true,
+                'results' => $doctors
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'results' => null
+            ], 404);
+        }
     }
+
 
     /**
      * Show the form for editing the specified resource.

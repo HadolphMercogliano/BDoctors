@@ -26,6 +26,8 @@ class DoctorSeeder extends Seeder
       {
         $profile = new Doctor();
         $profile->user_id = $i;
+        $profile->name = $faker->firstName($gender=null);
+        $profile->surname = $faker->lastName();
         $profile->description = $faker->text();
         $profile->curriculum_vitae = $faker->text();
         $profile->photo = $faker->imageUrl(480, 480, 'person', true);
